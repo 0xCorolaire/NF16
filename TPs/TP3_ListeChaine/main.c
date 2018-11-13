@@ -9,9 +9,10 @@ int main() {
 	printf("/*-------------------------------*/\n");
 	printf("/*----------*/Menu/*-------------*/\n");
 	printf("/*-------------------------------*/\n");
-  T_ListeEtu listeEtu = NULL;
+  T_ListeEtu listeEtu = creerListe();
   int isSelected = 0;
   while(1){
+    isSelected = 0; //on remet la variable à 0 pour ne pas revenir directemenet au même choix à la nouvelle itération du while
     printf("Bienvenue dans le management des étudiants. Veuillez choisir une option : \n\n");
 		printf("1. Ajouter un étudiant à la liste\n\n");
 		printf("2. Ajouter une note a un étudiant\n\n");
@@ -22,7 +23,7 @@ int main() {
     while(isSelected==0){
 		    scanf("%d", &isSelected);
     }
-    switch(choix){
+    switch(isSelected){
       case 1: {
         printf("Ajout d'un étudiant choisi\n");
         int Selection = 1;
@@ -31,9 +32,9 @@ int main() {
           char* nom = (char*) malloc(25*sizeof(char));
           char* prenom = (char*) malloc(25*sizeof(char));
           printf("Saisissez l'id, le nom et le prenom de l'etudiant :\n");
-          scanf("%s %s %d", &id_etu, nom, prenom);
+          scanf("%d %s %s", &id_etu, nom, prenom);
           listeEtu = ajouterEtu(id_etu, nom, prenom, listeEtu);
-          printf("Tapez 1 pour continuer, ou un autre chiffre pour faire autre chose.\n");
+          printf("Tapez 0 pour arrêter, ou un autre chiffre pour continuer.\n");
           scanf("%d", &Selection);
         }
         break;
@@ -76,14 +77,14 @@ int main() {
       }
 
       case 5: {
-        printf("Vous choisissez d'afficher le classement : \n")
+        printf("Vous choisissez d'afficher le classement : \n");
         afficherClassement(listeEtu);
         break;
       }
     default:
       break;
     }
-  })
+  }
   printf("FIn du prograaaaaamme");
 
 

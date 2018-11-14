@@ -27,21 +27,21 @@ struct Etudiant
 typedef struct Etudiant T_Etudiant;
 typedef T_Etudiant * T_ListeEtu;
 
-T_Note* creerNote(float note, char *matiere); //CrÃ©ation dâ€™un Ã©lÃ©ment dâ€™une liste de notes :
-T_Etudiant *creerEtudiant(int idEtu, char *nom, char *prenom); //CrÃ©ation dâ€™un Ã©lÃ©ment dâ€™une liste dâ€™Ã©tudiants :
+T_Note* creerNote(float note, char *matiere); //Création d’un élément d’une liste de notes :
+T_Etudiant *creerEtudiant(int idEtu, char *nom, char *prenom); //Création d’un élément d’une liste d’étudiants :
 
-T_ListeNotes ajouterNote(float note, char *matiere, T_ListeNotes listeNotes); //Ajout dâ€™une note en tÃªte dâ€™une liste de notes (renvoie la liste de notes modifiÃ©e)
-T_ListeEtu ajouterNoteEtu(float note, char *matiere, int idEtu, T_ListeEtu listeEtu); //Ajout dâ€™une note pour un Ã©tudiant dans une liste dâ€™Ã©tudiants
-//Cette fonction renvoie la liste dâ€™Ã©tudiants modifiÃ©e. On veillera Ã  bien gÃ©rer le cas de lâ€™ajout dâ€™un Ã©tudiant
-// dans la liste si celui-ci nâ€™y figure pas encore.
+T_ListeNotes ajouterNote(float note, char *matiere, T_ListeNotes listeNotes); //Ajout d’une note en tête d’une liste de notes (renvoie la liste de notes modifiée)
+T_ListeEtu ajouterNoteEtu(float note, char *matiere, int idEtu, T_ListeEtu listeEtu); //Ajout d’une note pour un étudiant dans une liste d’étudiants
+//Cette fonction renvoie la liste d’étudiants modifiée. On veillera à bien gérer le cas de l’ajout d’un étudiant
+// dans la liste si celui-ci n’y figure pas encore.
 
-T_ListeEtu supprimerNoteEtu(char *matiere, int idEtu, T_ListeEtu listeEtu); //Suppression dâ€™une note pour un Ã©tudiant dans une liste dâ€™Ã©tudiants :
-// Cette fonction renvoie la liste dâ€™Ã©tudiants modifiÃ©e. On veillera Ã  retirer lâ€™Ã©tudiant de la liste si celui-ci nâ€™a
+T_ListeEtu supprimerNoteEtu(char *matiere, int idEtu, T_ListeEtu listeEtu); //Suppression d’une note pour un étudiant dans une liste d’étudiants :
+// Cette fonction renvoie la liste d’étudiants modifiée. On veillera à retirer l’étudiant de la liste si celui-ci n’a
 // plus aucune note.
 
-void afficherListeEtu(T_ListeEtu listeEtu); //6. Affichage dâ€™une liste dâ€™Ã©tudiants (nom, prÃ©nom, liste des notes)
+void afficherListeEtu(T_ListeEtu listeEtu); //6. Affichage d’une liste d’étudiants (nom, prénom, liste des notes)
 
-void afficherClassement(T_ListeEtu listeEtu); //7. Affichage du classement des Ã©tudiants par ordre dÃ©croissant de la moyenne (nom, prÃ©nom, moyenne) :
+void afficherClassement(T_ListeEtu listeEtu); //7. Affichage du classement des étudiants par ordre décroissant de la moyenne (nom, prénom, moyenne) :
 
 T_ListeEtu ajouterEtu(int idEtu, char *nom, char *prenom, T_ListeEtu listeEtu);
 T_ListeEtu creerListe();

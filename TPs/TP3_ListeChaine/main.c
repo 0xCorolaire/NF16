@@ -4,6 +4,8 @@
 #include "tp3.h"
 
 int main() {
+
+
   printf("/*-------------------------------*/\n");
 	printf("/*---------*/NF16 TP3/*----------*/\n");
 	printf("/*-------------------------------*/\n");
@@ -11,21 +13,31 @@ int main() {
 	printf("/*-------------------------------*/\n");
   T_ListeEtu listeEtu = creerListe();
   int isSelected = 0;
-  while(1){
-    isSelected = 0; //on remet la variable Ã  0 pour ne pas revenir directemenet au mÃªme choix Ã  la nouvelle itÃ©ration du while
-    printf("Bienvenue dans le management des Ã©tudiants. Veuillez choisir une option : \n\n");
-		printf("1. Ajouter un Ã©tudiant Ã  la liste\n\n");
-		printf("2. Ajouter une note a un Ã©tudiant\n\n");
+
+     /* Code pour faciliter les tests */
+    listeEtu = ajouterEtu(1, "baltazar", "merlin", listeEtu);
+    listeEtu = ajouterEtu(2, "john", "doe", listeEtu);
+    listeEtu = ajouterEtu(3, "jane", "doe", listeEtu);
+
+    /* Fin du code pour faciliter les tests */
+
+
+  while(isSelected != 6){
+    isSelected = 0; //on remet la variable à 0 pour ne pas revenir directemenet au même choix à la nouvelle itération du while
+    printf("\n \n Bienvenue dans le management des étudiants. Veuillez choisir une option : \n\n");
+		printf("1. Ajouter un étudiant à la liste\n\n");
+		printf("2. Ajouter une note a un étudiant\n\n");
 		printf("3. Supprimer une note\n\n");
-		printf("4. Afficher la liste des Ã©tudiants\n\n");
-		printf("5. Afficher le classement des Ã©tudiants\n\n");
+		printf("4. Afficher la liste des étudiants\n\n");
+		printf("5. Afficher le classement des étudiants\n\n");
 		printf("6. Quitter \n\n");
-    while(isSelected==0){
+    while(isSelected<1 || isSelected>6){
+		    printf("Choisissez une option \n");
 		    scanf("%d", &isSelected);
     }
     switch(isSelected){
       case 1: {
-        printf("Ajout d'un Ã©tudiant choisi\n");
+        printf("Interface d'ajout d'un étudiant\n");
         int Selection = 1;
         while(Selection){
           int id_etu;
@@ -34,22 +46,23 @@ int main() {
           printf("Saisissez l'id, le nom et le prenom de l'etudiant :\n");
           scanf("%d %s %s", &id_etu, nom, prenom);
           listeEtu = ajouterEtu(id_etu, nom, prenom, listeEtu);
-          printf("Tapez 0 pour arrÃªter, ou un autre chiffre pour continuer.\n");
+          printf("Tapez 0 pour arrêter, ou un autre chiffre pour continuer.\n");
           scanf("%d", &Selection);
         }
         break;
       }
 
       case 2: {
-        //Ajouter peut Ãªtre un test pour voir si les entrÃ©es sont valides ???
-        printf("Ajout de note choisi\n");
+        //Ajouter peut être un test pour voir si les entrées sont valides ???
+        printf("Interface d'ajout d'une note à un étudiant choisi\n");
         float note;
-  			char* matiere = (char*) malloc(6*sizeof(char));
+  			char matiere[12];
   			int id;
   			afficherListeEtu(listeEtu);
-  			printf("Saisissez l'id de l'Ã©tudiant :\n");
+  			printf("Saisissez l'id de l'étudiant :\n");
   			scanf("%d", &id);
-  			printf("Saisissez la matiÃ¨re\n");
+  			printf("Saisissez la matière\n");
+  			getchar();
   			scanf("%s", matiere);
   			printf("Saissez la note\n");
   			scanf("%f", &note);
@@ -63,7 +76,7 @@ int main() {
         int id = 0;
   			char* matiere = (char*) malloc(6*sizeof(char));
   			afficherListeEtu(listeEtu);
-  			printf("Saisissez l'id de l'Ã©tudiant puis la note que vous voulez supprimer ( en entrant la matiere )'\n");
+  			printf("Saisissez l'id de l'étudiant puis la note que vous voulez supprimer ( en entrant la matiere )'\n");
   			scanf("%d", &id);
   			scanf("%s", matiere);
   			listeEtu = supprimerNoteEtu(matiere, id, listeEtu);
@@ -71,7 +84,7 @@ int main() {
       }
 
       case 4: {
-        printf("Vous voulez afficher la liste des Ã©tudiants : \n");
+        printf("Vous voulez afficher la liste des étudiants : \n");
         afficherListeEtu(listeEtu);
         break;
       }

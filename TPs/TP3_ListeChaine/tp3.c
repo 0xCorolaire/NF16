@@ -1,4 +1,4 @@
-#include "TD3.h"
+#include "tp3.h"
 
 //typedef struct Note T_Note;
 //typedef T_Note* T_ListeNotes;
@@ -52,7 +52,7 @@ T_ListeNotes ajouterNote(float note, char *matiere, T_ListeNotes listeNotes){
         listeEtu->nbrNotes++;
         return listeEtu;
      }
-     else{
+     else{ //l'étudiant n'existe pas dans la liste
         T_Etudiant* e = creerEtudiant(idEtu, "INDEFINI", "INDEFINI");
         e->liste = ajouterNote(note,matiere,e->liste);
         e->suivant=listeEtu;
@@ -100,7 +100,9 @@ T_ListeEtu ajouterEtu(int idEtu, char *nom, char *prenom, T_ListeEtu listeEtu){
 
 
  void afficherListeEtu(T_ListeEtu listeEtu){
-    while(listeEtu){
+    if(listeEtu->identifiant==-1) printf(" La liste est actuellement vide \n");
+    else {
+        while(listeEtu){
         printf("Nom: %s, prenom: %s, liste des notes: \n",listeEtu->nom, listeEtu->prenom);
         T_ListeNotes l = listeEtu->liste;
         while(l){
@@ -109,6 +111,7 @@ T_ListeEtu ajouterEtu(int idEtu, char *nom, char *prenom, T_ListeEtu listeEtu){
         }
         if(listeEtu->moyenne>0) printf("Pour une moyenne de %.2f \n",listeEtu->moyenne);
         listeEtu = listeEtu->suivant;
+    }
     }
  }
 

@@ -166,3 +166,58 @@ void detruire_arbre(T_Arbre *abr){
   *abr = NULL;
   return;
 }
+
+/*
+------------PII : Arbres cousus ------------------
+*/
+
+T_Noeud_C *cousu_creer_noeud(int valeur){
+  T_Noeud_C* newNc = (T_Noeud_C*)malloc(sizeof(T_Noeud_C));
+  if(newNc==NULL){
+    return NULL;
+  }else{
+    newNc->key=valeur;
+    newNc->filsDroit=NULL;
+    newNc->filsGauche=NULL;
+    newNc->boolD=1;
+    newNc->boolG=1;
+    return newNc;
+  }
+}
+
+void cousu_prefixe(T_Arbre_C arbre){
+  if(arbre!=NULL){
+    if(arbre->filsGauche==NULL){
+        printf("      --> FG(%d): NULL",arbre->boolG);
+        return;
+    }else if(arbre->filsDroit==NULL){
+        printf("      --> FD(%d): NULL",arbre->boolD);
+        return;
+    }else{
+        printf("Noeud --> %d\n",arbre->key);
+        if(arbre->boolG!=1)
+            printf("      --> FG(%d): %d",arbre->boolG,arbre->filsGauche->key);
+        else
+            printf("      --> FG(%d): %d",arbre->boolG,arbre->filsGauche->key);
+        if(arbre->boolD!=1)
+            printf(" -- FD(%d): %d\n",arbre->bdd,arbre->filsDroit->key);
+        else
+            printf(" -- FD(%d): %d\n",arbre->bdd,arbre->filsDroit->key);
+        if(arbre->boolG==0)
+            cousu_prefixe(arbre->filsGauche);
+        if(arbre->boolD==0)
+            cousu_prefixe(arbre->filsDroit);
+    }
+  }
+  return;
+}
+
+void cousu_inserer(int valeur,T_Arbre_C *arbre){
+
+
+
+
+
+
+  
+}

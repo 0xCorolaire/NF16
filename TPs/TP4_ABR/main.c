@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "tp4.h"
+#include "tp4_abr.h"
+#include "tp4_cousu.h"
 
 int main()
 {
@@ -21,6 +22,10 @@ int main()
     detruire_arbre(&abr);
     abr_prefixe(abrc);
 
+    printf("---------------------------------------\n");
+    T_Arbre_C arbre_cousu = NULL;
+    cousu_inserer(11, &arbre_cousu);
+    cousu_prefixe(arbre_cousu);
 
 
 

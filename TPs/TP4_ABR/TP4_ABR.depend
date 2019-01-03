@@ -1,13 +1,25 @@
 # depslib dependency file v1.0
-1545928482 source:c:\users\hugo\gi\nf16\tps\tp4_abr\main.c
+1546508281 source:c:\users\hugo\gi\nf16\tps\tp4_abr\main.c
 	<stdio.h>
 	<stdlib.h>
-	"tp4.h"
+	"tp4_abr.h"
+	"tp4_cousu.h"
 
-1545927884 c:\users\hugo\gi\nf16\tps\tp4_abr\tp4.h
+1545933587 c:\users\hugo\gi\nf16\tps\tp4_abr\tp4.h
 	<stdio.h>
 	<stdlib.h>
 
-1545928662 source:c:\users\hugo\gi\nf16\tps\tp4_abr\tp4.c
+1545934669 source:c:\users\hugo\gi\nf16\tps\tp4_abr\tp4.c
 	"TP4.h"
+
+1546508293 source:c:\users\hugo\gi\nf16\tps\tp4_abr\tp4_abr.c
+	"TP4_ABR.h"
+
+1546508264 c:\users\hugo\gi\nf16\tps\tp4_abr\tp4_abr.h
+	<stdio.h>
+	<stdlib.h>
+
+1546513008 c:\users\hugo\gi\nf16\tps\tp4_abr\tp4_cousu.h
+	<stdio.h>
+	<stdlib.h>
 

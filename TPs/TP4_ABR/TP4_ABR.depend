@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1546508281 source:c:\users\hugo\gi\nf16\tps\tp4_abr\main.c
+1546851107 source:c:\users\hugo\gi\nf16\tps\tp4_abr\main.c
 	<stdio.h>
 	<stdlib.h>
 	"tp4_abr.h"
@@ -19,7 +19,10 @@
 	<stdio.h>
 	<stdlib.h>
 
-1546513008 c:\users\hugo\gi\nf16\tps\tp4_abr\tp4_cousu.h
+1546513147 c:\users\hugo\gi\nf16\tps\tp4_abr\tp4_cousu.h
 	<stdio.h>
 	<stdlib.h>
+
+1546850729 source:c:\users\hugo\gi\nf16\tps\tp4_abr\tp4_cousu.c
+	"TP4_COUSU.h"
 

@@ -19,7 +19,7 @@ void cousu_prefixe(T_Arbre_C arbre);
 
 //Insertion
 void cousu_inserer(int valeur,T_Arbre_C *arbre);
-
+void cousu_infixe(T_Arbre_C *arbre);
 
 
 #endif // TP4_COUSU_H_INCLUDED

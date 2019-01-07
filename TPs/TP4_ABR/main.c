@@ -25,8 +25,13 @@ int main()
     printf("---------------------------------------\n");
     T_Arbre_C arbre_cousu = NULL;
     cousu_inserer(11, &arbre_cousu);
-    cousu_prefixe(arbre_cousu);
-
+    cousu_inserer(2, &arbre_cousu);
+    cousu_inserer(13, &arbre_cousu);
+    cousu_inserer(1, &arbre_cousu);
+    cousu_inserer(6, &arbre_cousu);
+    cousu_inserer(17, &arbre_cousu);
+    cousu_inserer(15, &arbre_cousu);
+    cousu_infixe(&arbre_cousu);
 
 
     return 0;

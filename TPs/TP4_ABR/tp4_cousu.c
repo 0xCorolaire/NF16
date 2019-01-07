@@ -39,24 +39,28 @@ void cousu_prefixe(T_Arbre_C arbre){
   }
 }
 
+//En recursif
 void cousu_inserer(int valeur,T_Arbre_C *arbre){
-  T_Noeud_C* newNc=cousu_creer_noeud(valeur);
-  T_Arbre_C tmp2=NULL;
   T_Arbre_C tmp=*arbre;
   if(tmp==NULL){
     //On peut créer la valeur
     tmp=cousu_creer_noeud(valeur);
   }else if(valeur<tmp->key){
-    if(tmp->boolD==1){
+    //Si find de l'arbre
+    if(tmp->boolG==1){
+        T_Arbre_C newNc=cousu_creer_noeud(valeur);
         newNc->filsGauche=tmp->filsGauche;
         newNc->filsDroit=tmp;
         tmp->filsGauche=newNc;
         tmp->boolG=0;
     }else{
+        //Sinon on recursif
         cousu_inserer(valeur,&tmp->filsGauche);
     }
   }else if(valeur>tmp->key){
+    //pareil
     if(tmp->boolD==1){
+        T_Arbre_C newNc=cousu_creer_noeud(valeur);
         newNc->filsDroit=tmp->filsGauche;
         newNc->filsGauche=tmp;
         tmp->filsDroit=newNc;
@@ -65,5 +69,57 @@ void cousu_inserer(int valeur,T_Arbre_C *arbre){
         cousu_inserer(valeur,&tmp->filsDroit);
     }
   }
+  //On affecte la valeur
   *arbre=tmp;
+}
+
+//Affichage infixe
+void cousu_infixe(T_Arbre_C *arbre){
+  T_Arbre_C tmp=*arbre;
+  //On part du noeud le + a gauche
+  while(tmp->filsGauche != NULL){
+        tmp=tmp->filsGauche;
+  }
+  //On va jusqu'au noeud max
+  while(tmp->filsDroit!=NULL){
+    printf("Noeud --> %d\n", tmp->key);
+    if (tmp->filsGauche != NULL){
+        printf("        --> FG (%d) : %d", tmp->boolG, tmp->filsGauche->key);
+    }
+    else {
+        printf("        --> FG (%d) : NULL", tmp->boolG);
+    }
+    if (tmp->filsDroit!=NULL){
+        printf(" -- FD (%d) : %d\n", tmp->boolD, tmp->filsDroit->key);
+    }
+    else{
+        printf(" -- FD (%d) : NULL\n", tmp->boolD);
+    }
+    //Si on a plus de successeur -> on pointe sur le successeur
+    if(tmp->boolD == 1){
+        tmp=tmp->filsDroit;
+    }
+    //Sinon on check si le fD a des saG
+    else if(tmp->boolD==0){
+      tmp=tmp->filsDroit;
+      //Tant qu'il a un fg
+      while(tmp->boolG!=1){
+        tmp=tmp->filsGauche;
+      }
+    }
+  }
+  //Une fois terminé, on doit afficher le dernier noeud
+  printf("Noeud --> %d\n", tmp->key);
+  if (tmp->filsGauche!=NULL){
+    printf("        --> FG (%d) : %d", tmp->boolG, tmp->filsGauche->key);
+  }
+  else {
+    printf("        --> FG (%d) : NULL", tmp->boolG);
+  }
+  if (tmp->filsDroit!=NULL){
+    printf(" -- FD (%d) : %d\n", tmp->boolD, tmp->filsDroit->key);
+  }
+  else {
+    printf(" -- FD (%d) : NULL\n", tmp->boolD);
+  }
 }

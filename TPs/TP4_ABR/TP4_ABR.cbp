@@ -34,10 +34,14 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="tp4.c">
+		<Unit filename="tp4_abr.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="tp4.h" />
+		<Unit filename="tp4_abr.h" />
+		<Unit filename="tp4_cousu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tp4_cousu.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

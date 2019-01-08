@@ -61,7 +61,7 @@ void cousu_inserer(int valeur,T_Arbre_C *arbre){
     //pareil
     if(tmp->boolD==1){
         T_Arbre_C newNc=cousu_creer_noeud(valeur);
-        newNc->filsDroit=tmp->filsGauche;
+        newNc->filsDroit=tmp->filsDroit;
         newNc->filsGauche=tmp;
         tmp->filsDroit=newNc;
         tmp->boolD=0;
@@ -80,6 +80,7 @@ void cousu_infixe(T_Arbre_C *arbre){
   while(tmp->filsGauche != NULL){
         tmp=tmp->filsGauche;
   }
+  printf("%d",tmp->key);
   //On va jusqu'au noeud max
   while(tmp->filsDroit!=NULL){
     printf("Noeud --> %d\n", tmp->key);
@@ -122,4 +123,32 @@ void cousu_infixe(T_Arbre_C *arbre){
   else {
     printf(" -- FD (%d) : NULL\n", tmp->boolD);
   }
+}
+
+void abr_to_cousu(T_Arbre original, T_Arbre_C *clone, T_Noeud* parent){
+    if (original == NULL){
+        printf("L'arbre a copier est null, Aucune utilité de copier un arbre nul.");
+        return;
+    }
+
+    *clone = cousu_creer_noeud(original->key);
+    //Par recursivité, on classe les valeur. Si la nouvelle valeur est supérieure, on dit qu'elle devient son pere ( et devient fils gauche) vice versa
+    if (parent != NULL){
+        if (parent->key>(*clone)->key){
+            parent->filsGauche=*clone;
+        }
+        else{
+            parent->filsDroit=*clone;
+        }
+    }
+
+    //fait par recursivité, on parcours toutes les branches
+    if (original->filsDroit!=NULL) {
+        (*clone)->boolD=0;
+        abr_to_cousu(original->filsDroit,&((*clone)->filsDroit),*clone);
+    }
+    if (original->filsGauche!=NULL){
+        (*clone)->boolG=0;
+        abr_to_cousu(original->filsGauche, &((*clone)->filsGauche),*clone);
+    }
 }

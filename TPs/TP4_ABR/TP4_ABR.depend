@@ -26,3 +26,24 @@
 1546850729 source:c:\users\hugo\gi\nf16\tps\tp4_abr\tp4_cousu.c
 	"TP4_COUSU.h"
 
+1546943400 source:c:\users\dekop\desktop\nf16\tps\tp4_abr\tp4_abr.c
+	"TP4_ABR.h"
+
+1546943400 c:\users\dekop\desktop\nf16\tps\tp4_abr\tp4_abr.h
+	<stdio.h>
+	<stdlib.h>
+
+1546946990 source:c:\users\dekop\desktop\nf16\tps\tp4_abr\tp4_cousu.c
+	"TP4_COUSU.h"
+
+1546945448 c:\users\dekop\desktop\nf16\tps\tp4_abr\tp4_cousu.h
+	<stdio.h>
+	<stdlib.h>
+	"tp4_abr.h"
+
+1546946221 source:c:\users\dekop\desktop\nf16\tps\tp4_abr\main.c
+	<stdio.h>
+	<stdlib.h>
+	"tp4_abr.h"
+	"tp4_cousu.h"
+

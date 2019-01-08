@@ -1,4 +1,4 @@
-#include "TP4_ABR.h"
+#include "tp4_abr.h"
 
 T_Noeud *abr_creer_noeud(int valeur){
   T_Noeud* newN = (T_Noeud*)malloc(sizeof(T_Noeud));
@@ -62,7 +62,7 @@ void abr_inserer_recurs(int valeur, T_Arbre *abr){
             if((*abr)->filsGauche) abr_inserer(valeur, &(*abr)->filsGauche);
             else (*abr)->filsGauche = abr_creer_noeud(valeur);
     }
-    else abr = abr_creer_noeud(valeur);
+    else (*abr) = abr_creer_noeud(valeur);
 }
 
 T_Noeud* abr_max(T_Arbre abr){
@@ -107,13 +107,14 @@ void abr_clone(T_Arbre original, T_Arbre *clone, T_Noeud* parent) {
     //Simple ici, on donne la racine au clone, puis on parcours l'original et attribuer à chaque fois le fd, fg en descendant danss l'arbre
     *clone = abr_creer_noeud(original->key);
     //Par recursivité, on classe les valeur. Si la nouvelle valeur est supérieure, on dit qu'elle devient son pere ( et devient fils gauche) vice versa
-    if (parent != NULL)
+    if (parent != NULL){
         if (parent->key>(*clone)->key){
             parent->filsGauche=*clone;
         }
         else{
             parent->filsDroit=*clone;
         }
+    }
     //fait par recursivité, on parcours toutes les branches
     if (original->filsDroit!=NULL) {
         abr_clone(original->filsDroit,&((*clone)->filsDroit),*clone);
@@ -133,7 +134,7 @@ void detruire_arbre(T_Arbre *abr){
   return;
 }
 
-void detruire_arbre_alt(T_Arbre *abr){
+/* void detruire_arbre_alt(T_Arbre *abr){
     if((*abr)->filsGauche){
         printf("Destruction du fils gauche %d \n", (*abr)->filsGauche->key);
         detruire_arbre(&((*abr)->filsGauche));
@@ -150,4 +151,4 @@ void detruire_arbre_alt(T_Arbre *abr){
         free(tmp);
     }
     if(!((*abr)->filsGauche) && !((*abr)->filsGauche)) printf("Destruction du noeud %d \n", (*abr)->key);
-}
+} */

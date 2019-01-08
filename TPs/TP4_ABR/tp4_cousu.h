@@ -23,6 +23,6 @@ void cousu_inserer(int valeur,T_Arbre_C *arbre);
 void cousu_infixe(T_Arbre_C *arbre);
 
 //Transformation
-void abr_to_cousu(T_Arbre abr, T_Arbre_C *clone, T_Noeud* parent);
+void abr_to_cousu(T_Arbre abr, T_Arbre_C *clone, T_Noeud_C* parent);
 
 #endif // TP4_COUSU_H_INCLUDED

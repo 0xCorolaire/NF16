@@ -1,4 +1,4 @@
-#include "TP4_COUSU.h"
+#include "tp4_cousu.h"
 /*
 ------------PII : Arbres cousus ------------------
 */
@@ -43,7 +43,7 @@ void cousu_prefixe(T_Arbre_C arbre){
 void cousu_inserer(int valeur,T_Arbre_C *arbre){
   T_Arbre_C tmp=*arbre;
   if(tmp==NULL){
-    //On peut créer la valeur
+    //On peut crï¿½er la valeur
     tmp=cousu_creer_noeud(valeur);
   }else if(valeur<tmp->key){
     //Si find de l'arbre
@@ -80,7 +80,6 @@ void cousu_infixe(T_Arbre_C *arbre){
   while(tmp->filsGauche != NULL){
         tmp=tmp->filsGauche;
   }
-  printf("%d",tmp->key);
   //On va jusqu'au noeud max
   while(tmp->filsDroit!=NULL){
     printf("Noeud --> %d\n", tmp->key);
@@ -109,7 +108,7 @@ void cousu_infixe(T_Arbre_C *arbre){
       }
     }
   }
-  //Une fois terminé, on doit afficher le dernier noeud
+  //Une fois terminï¿½, on doit afficher le dernier noeud
   printf("Noeud --> %d\n", tmp->key);
   if (tmp->filsGauche!=NULL){
     printf("        --> FG (%d) : %d", tmp->boolG, tmp->filsGauche->key);
@@ -125,30 +124,39 @@ void cousu_infixe(T_Arbre_C *arbre){
   }
 }
 
-void abr_to_cousu(T_Arbre original, T_Arbre_C *clone, T_Noeud* parent){
-    if (original == NULL){
-        printf("L'arbre a copier est null, Aucune utilité de copier un arbre nul.");
+void abr_to_cousu(T_Arbre original, T_Arbre_C *clone, T_Noeud_C* parent){
+     if (original == NULL){
+        printf("L'arbre a copier est null, Aucune utilitï¿½ de copier un arbre nul.");
         return;
     }
 
-    *clone = cousu_creer_noeud(original->key);
-    //Par recursivité, on classe les valeur. Si la nouvelle valeur est supérieure, on dit qu'elle devient son pere ( et devient fils gauche) vice versa
+    T_Noeud_C *tmp = cousu_creer_noeud(original->key);
+    
+    
     if (parent != NULL){
-        if (parent->key>(*clone)->key){
-            parent->filsGauche=*clone;
+        if (parent->key > (tmp)->key){ //le noeud est un fils gauche
+            (tmp)->filsGauche=parent->filsGauche;
+            (tmp)->filsDroit=parent;
+            parent->filsGauche=tmp;
+            parent->boolG=0;
         }
-        else{
-            parent->filsDroit=*clone;
+        else if(parent->key < (tmp) ->key){ //le noeud est un fils droit
+            (tmp)->filsDroit=parent->filsDroit;
+            (tmp)->filsGauche=parent;
+            parent->filsDroit=tmp;
+            parent->boolD=0;
+
         }
     }
 
-    //fait par recursivité, on parcours toutes les branches
+    *clone = tmp;
+
+
     if (original->filsDroit!=NULL) {
-        (*clone)->boolD=0;
         abr_to_cousu(original->filsDroit,&((*clone)->filsDroit),*clone);
     }
     if (original->filsGauche!=NULL){
-        (*clone)->boolG=0;
         abr_to_cousu(original->filsGauche, &((*clone)->filsGauche),*clone);
     }
-}
+    
+} 

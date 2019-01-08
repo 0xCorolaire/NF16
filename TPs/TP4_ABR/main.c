@@ -6,7 +6,7 @@
 int main()
 {
     T_Arbre abr = NULL;
-    T_Arbre abrc = NULL;
+    T_Arbre_C abrc = NULL;
     /* abr_inserer(5, &abr);
     abr_inserer(8, &abr);
     abr_inserer(25, &abr);
@@ -39,7 +39,9 @@ int main()
     cousu_inserer(17, &arbre_cousu);
     cousu_inserer(15, &arbre_cousu);
     abr_to_cousu(abr, &abrc, NULL);
-    cousu_prefixe(abrc);
+    cousu_infixe(&arbre_cousu);
+    printf("---------------------------------------\n");
+    cousu_infixe(&abrc);
 
     return 0;
 }

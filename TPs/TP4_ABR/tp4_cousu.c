@@ -1,4 +1,4 @@
-#include "TP4_COUSU.h"
+#include "tp4_cousu.h"
 /*
 ------------PII : Arbres cousus ------------------
 */
@@ -43,7 +43,7 @@ void cousu_prefixe(T_Arbre_C arbre){
 void cousu_inserer(int valeur,T_Arbre_C *arbre){
   T_Arbre_C tmp=*arbre;
   if(tmp==NULL){
-    //On peut créer la valeur
+    //On peut crï¿½er la valeur
     tmp=cousu_creer_noeud(valeur);
   }else if(valeur<tmp->key){
     //Si find de l'arbre
@@ -61,7 +61,7 @@ void cousu_inserer(int valeur,T_Arbre_C *arbre){
     //pareil
     if(tmp->boolD==1){
         T_Arbre_C newNc=cousu_creer_noeud(valeur);
-        newNc->filsDroit=tmp->filsGauche;
+        newNc->filsDroit=tmp->filsDroit;
         newNc->filsGauche=tmp;
         tmp->filsDroit=newNc;
         tmp->boolD=0;
@@ -108,7 +108,7 @@ void cousu_infixe(T_Arbre_C *arbre){
       }
     }
   }
-  //Une fois terminé, on doit afficher le dernier noeud
+  //Une fois terminï¿½, on doit afficher le dernier noeud
   printf("Noeud --> %d\n", tmp->key);
   if (tmp->filsGauche!=NULL){
     printf("        --> FG (%d) : %d", tmp->boolG, tmp->filsGauche->key);
@@ -122,4 +122,43 @@ void cousu_infixe(T_Arbre_C *arbre){
   else {
     printf(" -- FD (%d) : NULL\n", tmp->boolD);
   }
+}
+
+void abr_to_cousu(T_Arbre original, T_Arbre_C *clone, T_Noeud_C* parent){
+     if (original == NULL){
+        printf("L'arbre a copier est null, Aucune utilitï¿½ de copier un arbre nul.");
+        return;
+    }
+
+    T_Noeud_C *tmp = cousu_creer_noeud(original->key);
+    if (parent != NULL){
+        if (parent->key > (tmp)->key){ //le noeud est un fils gauche
+            (tmp)->filsGauche=parent->filsGauche;
+            (tmp)->filsDroit=parent;
+            parent->filsGauche=tmp;
+            parent->boolG=0;
+        }
+        else if(parent->key < (tmp) ->key){ //le noeud est un fils droit
+            (tmp)->filsDroit=parent->filsDroit;
+            (tmp)->filsGauche=parent;
+            parent->filsDroit=tmp;
+            parent->boolD=0;
+
+        }
+    }
+    *clone = tmp;
+    if (original->filsDroit!=NULL) {
+        abr_to_cousu(original->filsDroit,&((*clone)->filsDroit),*clone);
+    }
+    if (original->filsGauche!=NULL){
+        abr_to_cousu(original->filsGauche, &((*clone)->filsGauche),*clone);
+    }
+}
+
+void detruire_arbre_C(T_Arbre_C* abr){
+    if(*abr != NULL){
+        if((*abr)->boolG == 0) detruire_arbre_C(&(*abr)->filsGauche);
+        if((*abr)->boolD == 0) detruire_arbre_C(&(*abr)->filsDroit);
+        free(*abr);
+    }
 }

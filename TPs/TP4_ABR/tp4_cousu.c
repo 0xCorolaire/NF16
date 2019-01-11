@@ -65,12 +65,12 @@ void cousu_inserer(int valeur,T_Arbre_C *arbre){
         newNc->filsGauche=tmp;
         tmp->filsDroit=newNc;
         tmp->boolD=0;
-    }else if(valeur==tmp->key){
-      printf("ERREUR : la valeur est deja presente dans l'arbre");
-      return;
     }else{
         cousu_inserer(valeur,&tmp->filsDroit);
     }
+  }else if(valeur==tmp->key){
+      printf("ERREUR : la valeur est deja presente dans l'arbre");
+      return;
   }
   //On affecte la valeur
   *arbre=tmp;
@@ -111,7 +111,7 @@ void cousu_infixe(T_Arbre_C *arbre){
       }
     }
   }
-  //Une fois termin�, on doit afficher le dernier noeud
+  //Une fois termine, on doit afficher le dernier noeud
   printf("Noeud --> %d\n", tmp->key);
   if (tmp->filsGauche!=NULL){
     printf("        --> FG (%d) : %d", tmp->boolG, tmp->filsGauche->key);

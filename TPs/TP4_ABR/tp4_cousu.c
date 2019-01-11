@@ -43,7 +43,7 @@ void cousu_prefixe(T_Arbre_C arbre){
 void cousu_inserer(int valeur,T_Arbre_C *arbre){
   T_Arbre_C tmp=*arbre;
   if(tmp==NULL){
-    //On peut cr�er la valeur
+    //On peut creer la valeur
     tmp=cousu_creer_noeud(valeur);
   }else if(valeur<tmp->key){
     //Si find de l'arbre
@@ -65,6 +65,9 @@ void cousu_inserer(int valeur,T_Arbre_C *arbre){
         newNc->filsGauche=tmp;
         tmp->filsDroit=newNc;
         tmp->boolD=0;
+    }else if(valeur==tmp->key){
+      printf("ERREUR : la valeur est deja presente dans l'arbre");
+      return;
     }else{
         cousu_inserer(valeur,&tmp->filsDroit);
     }
